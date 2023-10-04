@@ -1,22 +1,30 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class CountingCharacters {
     public static void main(String[] args) {
-        String str = "If the product of two terms is zero then common sense says at least one of the two terms has to be zero to start with. So if you move all the terms over to one side, you can put the quadratics into a form that can be factored allowing that side of the equation to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
-        HashMap<Character, Integer> count = new HashMap<>();
-        char[] ch = str.toCharArray();
-        for (int i = 0; i < ch.length; i++) {
-            if (!count.containsKey(ch[i])) {
-                count.put(ch[i], count.get(ch[i]) + 1);
-                System.out.print(ch[i] + " ");
+        Scanner input = new Scanner(System.in);
+        System.out.println("What do you want to count?");
+        String testString = input.nextLine().toLowerCase();
+
+        HashMap<Character, Integer> letters = new HashMap<>();
+        for (char letter : testString.toCharArray()) {
+            if (Character.isLetter(letter)) {
+                if(letters.containsKey(letter))
+                letters.put(letter, letters.get(letter) + 1);
+            } else {
+                letters.put(letter, 1);
             }
-
         }
-
+        for(Map.Entry<Character, Integer> item: letters.entrySet()){
+            system.out.println(item.getKey() + ":" + item.getValue());
+        }
     }
 }
+
 
 
 
